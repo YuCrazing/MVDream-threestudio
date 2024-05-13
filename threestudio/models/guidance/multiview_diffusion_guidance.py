@@ -56,6 +56,7 @@ class MultiviewDiffusionGuidance(BaseModule):
         self.min_step = int( self.num_train_timesteps * min_step_percent )
         self.max_step = int( self.num_train_timesteps * max_step_percent )
         self.grad_clip_val: Optional[float] = None
+        self.alphas_cumprod = self.model.alphas_cumprod.to(self.device)
 
         self.to(self.device)
 
